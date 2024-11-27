@@ -86,6 +86,7 @@ __pycache__/
 local_settings.py
 
 .env*
+!.env.ci
 db.sqlite3
 misc/
 node_modules/
