@@ -56,10 +56,12 @@ jobs:
     name: Deploy
     needs: test
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'workflow_dispatch'
-      # Automatic deployment on master (commented out)
-      # || (github.ref == 'refs/heads/master' && github.event_name == 'push')
+    #    Automatic deployment on master (commented out)
+    # if: |
+    #   github.event_name == 'workflow_dispatch'
+    #   || (github.ref == 'refs/heads/master' && github.event_name == 'push')
+    # manual deployment only
+    if: github.event_name == 'workflow_dispatch'
     environment:
       name: ${{ inputs.environment || 'staging' }}
       url: ${{ vars.HEROKU_APP_HOST }}
